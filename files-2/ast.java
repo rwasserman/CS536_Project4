@@ -129,6 +129,10 @@ class ProgramNode extends ASTnode {
         myDeclList.unparse(p, indent);
     }
 
+    public void nameAnalysis(PrintWriter p, int indent) {
+
+    }
+
     // one kid
     private DeclListNode myDeclList;
 }
@@ -643,19 +647,25 @@ class FalseNode extends ExpNode {
 }
 
 class IdNode extends ExpNode {
-    public IdNode(int lineNum, int charNum, String strVal) {
+    public IdNode(int lineNum, int charNum, String strVal, Sym symVal) {
         myLineNum = lineNum;
         myCharNum = charNum;
         myStrVal = strVal;
+        mySymVal = symVal;
     }
 
     public void unparse(PrintWriter p, int indent) {
         p.print(myStrVal);
+        //prints out type inside of ()
+        p.print("(" + mySymVal.getType() + ")");
+        
+        
     }
 
     private int myLineNum;
     private int myCharNum;
     private String myStrVal;
+    private Sym mySymVal;
 }
 
 class DotAccessExpNode extends ExpNode {

@@ -54,9 +54,43 @@ public class P4 {
         }
 		
 		// ****** Add name analysis part here ******
-		
-        ((ASTnode)root.value).unparse(outFile, 0);
+
+        //check to see if there are any syntax errors
+        if (ErrMsg.errorFound) {
+            //fatal error discovered, end
+            outFile.close();
+            return;
+        } else { // no error discovered
+            // call nameAnalyzer
+            nameAnalyzer();
+        }
+         
+        // check to see if there are any 
+        // scanning, parsin, or name-analysis errors
+        if (ErrMsg.errorFound) {
+            //fatal error discovered, end
+            outFile.close();
+            return;
+        } else { // no error discovered
+
+            // call unparser by calling the method of the 
+            // ASTnode that is the root of the tree built by the parser
+            ((ASTnode)root.value).unparse(outFile, 0);
+            outFile.close();
+        }
+        
+        //end program
         outFile.close();
+        return;
+    }
+
+    /*
+    *
+    *
+    */
+    public static void nameAnalyzer() {
+
+
 
         return;
     }
