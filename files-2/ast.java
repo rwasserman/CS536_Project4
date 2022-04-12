@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 
+import javax.sound.midi.SysexMessage;
+
 // **********************************************************************
 // The ASTnode class defines the nodes of the abstract-syntax tree that
 // represents a minim program.
@@ -162,7 +164,7 @@ class DeclListNode extends ASTnode {
         Iterator it = myDecls.iterator();
         try {
             while (it.hasNext()) {
-                ((DeclNode)it.next()).unparse(p, indent, table);
+                ((DeclNode)it.next()).unparse(p, indent);
             }
         } catch (NoSuchElementException ex) {
             System.err.println("unexpected NoSuchElementException in DeclListNode.print");
@@ -342,7 +344,7 @@ class FnDeclNode extends DeclNode {
         // }
 
         doIndent(p, indent);
-        myType.unparse(p, 0, table);
+        myType.unparse(p, 0);
         p.print(" ");
         myId.unparse(p, 0, table);
         p.print("(");
@@ -371,6 +373,12 @@ class FormalDeclNode extends DeclNode {
         myId.unparse(p, 0);
     }
 
+    public void unparse(PrintWriter p, int indent, SymTable table) {
+        myType.unparse(p, 0);
+        p.print(" ");
+        myId.unparse(p, 0, table);
+    }
+
     // two kids
     private TypeNode myType;
     private IdNode myId;
@@ -380,6 +388,7 @@ class StructDeclNode extends DeclNode {
     public StructDeclNode(IdNode id, DeclListNode declList) {
         myId = id;
         myDeclList = declList;
+        mySym = null;
     }
 
     public void unparse(PrintWriter p, int indent) {
@@ -393,9 +402,42 @@ class StructDeclNode extends DeclNode {
 
     }
 
+    public void unparse(PrintWriter p, int indent, SymTable table) {
+       
+        SymTable newTable = new SymTable();
+        
+        try {
+            this.mySym = new SymStruct("struct " + myId.toString(), 0);
+
+            table.addDecl(mySym.type, mySym);
+            ProgramNode.structTab.addDecl(mySym.type, mySym);
+
+            doIndent(p, indent);
+            p.print("struct ");
+            myId.unparse(p, 0, table);
+            p.println("{");
+            myDeclList.unparse(p, indent + 4, table);
+            doIndent(p, indent);
+            p.println("};\n");
+ 
+
+
+         } catch (DuplicateSymException dupSym) {
+
+            
+
+            
+        } catch (EmptySymTableException emptySym) {
+
+
+        }
+
+    }
+
     // two kids
     private IdNode myId;
 	private DeclListNode myDeclList;
+    private SymStruct mySym;
 }
 
 // **********************************************************************

@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Sym {
-	private String type;
-	private int numParams;
+	protected String type;
+	protected int numParams;
 	
 	//Constructor
 	public Sym(String type) {
@@ -40,28 +41,26 @@ public class Sym {
 
 class SymStruct extends Sym {
 
-		private LinkedList<String> variables = new LinkedList<>();
-		private SymTable table;
-		private int numParams;
+		protected LinkedList<String> variables = new LinkedList<>();
+		protected SymTable table;
 
 		public SymStruct(String type, int numParams) {
 			super(type);
 			this.variables = new LinkedList<String>();
 			this.table = new SymTable();
-			this.numParams = numParams;
-
+	
 		}
 
 		public LinkedList<String> getVariablesFromSymStruct() {
-			return variables;
+			return this.variables;
 		}
 
 		public String getSpecificVariableFromSymStruct(int index) {
-			return variables.get(index);
+			return this.variables.get(index);
 		}
 
 		public String getFirstVariableFromSymStruct() {
-			return variables.getFirst();
+			return this.variables.getFirst();
 		}
 
 		public int getNumParamsFromSymStruct() {
@@ -69,11 +68,42 @@ class SymStruct extends Sym {
 		}
 
 		public SymTable getSymTableFromSymStruct() {
-			return table;
+			return this.table;
+		}
+
+
+
+		public String toString() {
+			return type;
 		}
 
 	}
+
+class SymFunction extends Sym { 
+
+	protected ArrayList<String> parameterTypes = new ArrayList<>();
+	protected String returnType = new String();
+
+	public SymFunction(String type, String returnType, ArrayList<String> parameterTypes) {
+		super(type);
+		this.returnType = returnType;
+		this.parameterTypes = parameterTypes;
+		
+	}
+
+	public ArrayList<String> getParameterTypes() {
+		return this.parameterTypes;
+	}
+
+	public String getReturnType() {
+		return this.returnType;
+	}
+
+
+
+
+}
 	
-	
+
 
 
