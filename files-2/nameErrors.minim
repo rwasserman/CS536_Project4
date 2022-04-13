@@ -1,0 +1,64 @@
+struct {
+    int repeatInt;
+    int repeatInt;
+
+    bool repeatBool;
+    bool repeatBool;
+
+    void repeatVoid;
+    void repeatVoid;
+
+
+}
+
+void main() {
+
+
+    repeatFunctionVoidReturn();
+    repeatFunctionVoidReturn();
+
+    repeatInt = 1;
+    repeatInt = repeatFunctionIntReturn(repeatInt, repeatInt);
+    repeatFunctionIntReturn(repeatInt, repeatInt);
+
+    repeatBool = repeatFunctionBoolReturn();
+    repeatFunctionBoolReturn();
+
+    mismatchReturnType();
+
+}
+
+void repeatFunctionVoidReturn() {
+    void repeatFunctionVoidReturn;
+
+    return;
+
+}
+
+void repeatFunctionVoidReturn () {
+    void repeatFunctionVoidReturn;
+
+    return repeatFunctionVoidReturn;
+
+}
+
+int repeatFunctionIntReturn (int sameParameter, int sameParameter) {
+    return sameParameter + sameParameter;
+}
+
+int repeatFunctionIntReturn (int sameParameter, int sameParameter) {
+     return sameParameter + sameParameter;
+}
+
+bool repeatFunctionBoolReturn () {
+    
+}
+
+bool repeatFunctionBoolReturn () {
+    
+}
+
+void mismatchReturnType() {
+
+    return 1;
+}

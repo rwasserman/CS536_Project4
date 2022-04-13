@@ -1,0 +1,217 @@
+bool y;
+int x;
+int xx;
+
+struct test {
+    int g;
+    int q;
+}
+
+struct testStruct {
+    int testIntStuct;
+    bool testBoolStruct;
+    void testVoidStruct;
+};
+
+int main() {
+
+    int mainTest;
+    int mainTest2;
+    mainTest2 = 4 + 4;
+
+    if (true) {
+        void testv;
+        
+        if (true) {
+            void voidGas;
+        }
+    }
+    
+    if (b == -1) { x = 4+3*5-y; while (c) { y = y*2+x; } } else { x = 0; }
+
+    while (true) {
+        bool whileBool;
+        if (true) {
+            void voidGas;
+        }
+
+    }
+
+    testFunctionCallBasic();
+    testFunctionCallWithArguments(mainTest2);
+    testFunctionCallWithArgumentsComplex(mainTest2, mainTest2, mainTest2);
+    testBooleanFunctionCall();
+    testMathOperators();
+    testMathLogicOperators();
+    testPureLogicOperators();
+    testDotOperator();
+    testStmtGrammarRules();
+    testEmptyVarDeclList();
+    
+    
+} 
+
+
+int testEmptyVarDeclList() {
+
+    return;
+}
+void testFunctionCallBasic () {
+    return 5;
+}
+
+bool testBooleanFunctionCall () {
+    bool testBoolReturn;
+    testBoolReturn = true;
+    return testBoolReturn;
+}
+
+int testMathOperators () {
+
+    int intOne;
+    int intTwo;
+    int plusTotal;
+    int minusTotal;
+    int timeTotal;
+    int divideTotal;
+    int negativeOfANumberTotal;
+    int negativeOfANumberTotalComplex;
+
+    intOne = 17;
+    intTwo = 13;
+
+    plusTotal = intOne + intTwo;
+    minusTotal = intOne - intTwo;
+    timeTotal = intOne * intTwo;
+    divideTotal = intOne / intTwo;
+    negativeOfANumberTotal = -intOne;
+    negativeOfANumberTotalComplex = - (intOne - intTwo);
+
+    return intOne;
+}
+
+bool testPureLogicOperators () {
+    bool boolOne;
+    bool boolTwo;
+    bool andTotal;
+    bool orTotal;
+    bool notOperatorTotal;
+    bool equalsTotal;
+    bool notEqualsTotal;
+
+    boolOne = true;
+    boolTwo = false;
+
+    andTotal = boolOne && boolTwo;
+    orTotal = boolOne || boolTwo;
+    equalsTotal = boolOne == boolTwo;
+    notOperatorTotal = !boolOne;
+    notEqualsTotal = boolOne != boolTwo;
+
+    return !boolTwo;
+}
+
+bool testMathLogicOperators() {
+
+    int intOne;
+    int intTwo;
+
+    bool equalsTotal;
+    bool lessTotal;
+    bool greaterTotal;
+    bool lessEqualTotal;
+    bool greaterEqualTotal;
+
+    intOne = 9832;
+    intTwo = 1;
+
+    equalsTotal = intOne == intTwo;
+    lessTotal = intOne < intTwo;
+    greaterTotal = intOne > intTwo;
+    lessEqualTotal = intOne <= intTwo;
+    greaterEqualTotal = intOne >= intTwo;
+
+
+    return true;
+}
+
+int testFunctionCallWithArguments( int argumentTest) {
+    return argumentTest;
+}
+
+int testFunctionCallWithArgumentsComplex(int argTest1, int argTest2, int argTest3) {
+    return argTest1 + (argTest2 - argTest3);
+}
+
+bool testDotOperator() {
+
+    int intValueFromStruct;
+    bool boolValueFromStruct;
+    void voidValueFromStruct;
+
+    testStruct.testIntStuct = 1717;
+    testStruct.testBoolStruct = false;
+    testStruct.testVoidStruct = "string literal test here";
+
+    intValueFromStruct = testStruct.testIntStuct;
+    boolValueFromStruct = testStruct.testBoolStruct;
+    voidValueFromStruct = testStruct.testVoidStruct;
+
+    return !(boolValueFromStruct);
+}
+
+bool testStmtGrammarRules() {
+
+    bool returnValue;
+    bool whileValue;
+    int incrementValue;
+    int decrementValue;
+
+    returnValue = true;
+    whileValue = true;
+    
+    incrementValue++;
+    incrementValue++;
+    decrementValue--;
+    incrementValue++;
+    decrementValue--;
+    incrementValue++;
+    decrementValue--;
+    
+    testFunctionCallBasic();
+
+    if (returnValue == true) {
+        if (returnValue != false) {
+            returnValue = true;
+        } else {
+            returnValue = false;
+        }
+
+        if (true) {
+            returnValue = true;
+            testBooleanFunctionCall();
+        }
+
+        while (whileValue) {
+
+            if (returnValue == true && whileValue == true) {
+                returnValue = true;
+                whileValue = true;
+            } else {
+                returnValue = true;
+                testFunctionCallBasic();
+                return returnValue;
+            }
+        } 
+    }
+
+    return returnValue = false;
+}
+
+void testReadWrite() {
+    int readWriteVar;
+    readWriteVar = 17;
+    
+    input >> readWriteVar;
+    disp << readWriteVar;
+}
