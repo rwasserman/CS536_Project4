@@ -1,0 +1,93 @@
+struct {
+    int repeatInt;
+    int repeatInt;
+
+    bool repeatBool;
+    bool repeatBool;
+
+    void repeatVoid;
+    void repeatVoid;
+
+
+}
+
+void main() {
+
+
+    repeatFunctionVoidReturn();
+    repeatFunctionVoidReturn();
+
+    repeatInt = 1;
+    repeatInt = repeatFunctionIntReturn(repeatInt, repeatInt);
+    repeatFunctionIntReturn(repeatInt, repeatInt);
+
+    repeatBool = repeatFunctionBoolReturn();
+    repeatFunctionBoolReturn();
+
+    mismatchReturnType();
+
+}
+
+void repeatFunctionVoidReturn() {
+    void repeatFunctionVoidReturn;
+
+    return;
+
+}
+
+void repeatFunctionVoidReturn () {
+    void repeatFunctionVoidReturn;
+
+    return repeatFunctionVoidReturn;
+
+}
+
+int repeatFunctionIntReturn (int sameParameter, int sameParameter) {
+    return sameParameter + sameParameter;
+}
+
+int repeatFunctionIntReturn (int sameParameter, int sameParameter) {
+     return sameParameter + sameParameter;
+}
+
+bool repeatFunctionBoolReturn () {
+    
+    repeatBool = false;
+
+    return true;
+}
+
+bool repeatFunctionBoolReturn () {
+    return false;    
+}
+
+void mismatchReturnType() {
+
+    return 1;
+}
+
+int testNestedNames() {
+
+    repeatVoid = true;
+    while (repeatVoid) {
+    
+        repeatInt = 5;
+        repeatInt = 9;
+        while (repeatVoid) {
+            repeatVoid = false;
+        }
+    }
+
+
+}
+
+void testRepeatDeclsInMethod() {
+    int repeatIntDecl;
+    int repeatIntDecl;
+
+    bool repeatBoolDecl;
+    bool repeatBoolDecl;
+    repeatBoolDecl = false;
+
+    return;
+}
